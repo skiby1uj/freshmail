@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Discount Code Generator!{% endblock %}
+
+{% block body %}
+<form action="/download" method="post">
+    How many codes: <input name="code_count" type="number" min="1" step="1">
+    <br>
+    {% if codeCountErrors is defined %}
+        {% for error in codeCountErrors %}
+            <div style="color: red">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+    Length of the one code: <input name="code_length" type="number" min="1" step="1">
+    <br>
+    {% if codeLengthErrors is defined %}
+        {% for error in codeLengthErrors %}
+            <div style="color: red">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+    <input type="submit" value="Generate and Download">
+</form>
+{% endblock %}
